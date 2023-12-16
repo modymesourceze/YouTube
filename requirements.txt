@@ -1,7 +1,12 @@
-pyrogram
 requests
 pyromod
 kvsqlite
-datetime
-yt_dlp
-youtube_search
+pyrogram==2.0.106
+pysmartdl
+pyro-listener
+youtube-search==2.1.2
+yt-dlp
+requests==2.31.0
+tgcrypto==1.2.5
+datetime==5.3
+python-dotenv
