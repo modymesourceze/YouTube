@@ -1,0 +1,9 @@
+pyrogram
+requests
+pyromod
+kvsqlite
+datetime
+pySmartDL
+pyrolistener
+yt_dlp
+youtube_search
