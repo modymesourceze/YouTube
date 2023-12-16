@@ -94,61 +94,7 @@ async def statss(app, query):
                 mon+=int(i['coins'])
             except:
                 continue
-    await app.send_message(query.from_user.id, x)
-    return
-@app.on_callback_query(filters.regex("^add_coins$"), group=8)
-async def add_coinssw(app, query):
-    user_id = query.from_user.id
-    if user_id in admins:
-        askk = await app.ask(user_id, 'ارسل الي دي العضو اللي تريد ترسله النقاط.')
-        if askk.text:
-            try:
-                t_id = int(askk.text)
-            except:
-                await askk.reply("ارسل الايدي بشكل صحيح")
-                return
-            ask2 = await app.ask(user_id, 'ارسل عدد النقاط اللي تريد ارسالها للشخص')
-            if ask2.text:
-                try:
-                    amount = float(ask2.text)
-                except:
-                    return
-                b = db.get(f"user_{t_id}")
-                b['coins'] = float(b['coins']) + amount
-                db.set(f"user_{t_id}", b)
-                await ask2.reply(f"• تم اضافة نقاط الي : `{t_id}`\n\n• العدد : `{amount}` ")
-                await app.send_message(int(t_id), f"• تم اضافة `{amount}` نقاط الى حسابك من قبل المطور")
-            else:
-                pass
-        else:
-            pass
-@app.on_callback_query(filters.regex("^less_coin$"), group=9)
-async def les_co(app, query):
-    user_id = query.from_user.id
-    if user_id in admins:
-        askk = await app.ask(user_id, 'ارسل اي دي العضو اللي تريد تخصم منه النقاط')
-        if askk.text:
-            try:
-                t_id = int(askk.text)
-            except:
-                await askk.reply("رجاء ارسل الاي دي بشكل صحيح")
-                return
-            ask2 = await app.ask(user_id, 'ارسل عدد النقاط اللي تريد خصمة من هذا الشخص')
-            if ask2.text:
-                try:
-                    amount = float(ask2.text)
-                except:
-                    return
-                b = db.get(f"user_{t_id}")
-                b['coins'] = float(b['coins']) - amount
-                db.set(f"user_{t_id}", b)
-                await ask2.reply(f"• تم خصم نقاط من : `{t_id}`\n\n• العدد : `{amount}` ")
-                await app.send_message(int(t_id), f"• تم خصم `{amount}` نقاط من حسابك من قبل المطور")
-                return
-            else:
-                pass
-        else:
-            pass
+
 @app.on_callback_query(filters.regex("^brods$"), group=10)
 async def brod_ss(app, query):
     user_id = query.from_user.id
@@ -190,27 +136,6 @@ def ttd(timestamp) -> str:
     formatted_date = date.strftime('%Y-%m-%d %H:%M:%S')
     
     return formatted_date
-@app.on_callback_query(filters.regex("^get_infos$"), group=11)
-async def get_infso(app, query):
-    user_id = query.from_user.id
-    ask = await app.ask(user_id, 'ارسل الان ايدي الشخص اللي تريد تعرف معلوماته')
-    if ask.text:
-        try:
-            id = int(ask.text)
-        except:
-            return
-        d = db.get(f"user_{id}")
-        if d is None:
-            await ask.reply("هذا الحساب غير موجود في البوت")
-            return
-        try:
-            coins = d['coins']
-            ddd = str(d['date']).split(".")[0]
-            date = ttd(int(ddd))
-        except Exception as x:
-            print(x)
-            return
-        await ask.reply(f'• معلومات حسابه :\n\n• عدد نقاطه : {coins}\n\n• تاريخ دخولة للبوت : {date} ')
 @app.on_callback_query(filters.regex("^ban_mes$"), group=12)
 async def ban_mes(app, query):
     user_id = query.from_user.id
