@@ -3,6 +3,5 @@ requests
 pyromod
 kvsqlite
 datetime
-pyrolistener
 yt_dlp
 youtube_search
