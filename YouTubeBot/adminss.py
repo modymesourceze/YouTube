@@ -19,7 +19,6 @@ async def ade(app, msg):
                 [btn('قسم تغيير الكلايش', 'set_start')],
                 [btn('قسم الاشتراك الاجبارى', 'setforce'), btn('قسم الادمنية', 'admins_bot')],
                 [btn('قسم الاذاعة', 'brods'), btn('قسم الاحصائيات', 'stats')],
-                [btn('• اعدادات بوت الرشق •', 'setting_bot')],
                 
             ]
         )
